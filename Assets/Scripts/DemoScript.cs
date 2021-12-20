@@ -48,12 +48,12 @@ public class DemoScript : MonoBehaviour
     {
         int progressID = Progress.Start("C# Async Task");
 
-        await Task.Run(() =>
+        await Task.Run(async () =>
         {
             for (int sample = 0; sample < 10; ++sample)
             {
                 Progress.Report(progressID, sample + 1, 10, $"Processing sample {(sample + 1)}");
-                Task.Delay(2000).Wait();
+                await Task.Delay(2000);
             }
         });
 
